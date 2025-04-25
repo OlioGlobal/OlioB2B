@@ -1,10 +1,8 @@
-// components/HowWeDoIt.jsx
-"use client";
 import { useState } from "react";
 import Image from "next/image";
 
 const HowWeDoIt = () => {
-  // Define the FAQ items
+  
   const faqItems = [
     {
       id: "01",
@@ -32,10 +30,10 @@ const HowWeDoIt = () => {
     },
   ];
 
-  // State to track which FAQ item is expanded
+
   const [expandedId, setExpandedId] = useState("01");
 
-  // Toggle function for expanding/collapsing
+g
   const toggleExpand = (id) => {
     setExpandedId(expandedId === id ? null : id);
   };
@@ -61,7 +59,7 @@ const HowWeDoIt = () => {
               Machine Manufacturers
             </h2>
 
-            {/* FAQ Accordion */}
+
             <div className="space-y-6">
               {faqItems.map((item) => (
                 <div
