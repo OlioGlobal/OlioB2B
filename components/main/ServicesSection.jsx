@@ -1,0 +1,110 @@
+// components/ServicesSection.jsx
+import React from "react";
+
+const services = [
+  {
+    id: "01",
+    title: "High-Conversion Website Redesign",
+    description: (
+      <span>
+        <span className="text-[#253844] font-semibold">
+          Your website loses buyers in 5 seconds if it looks outdated or vague.
+        </span>{" "}
+        <br />
+        We build industry-specific sites that showcase your technical expertise,
+        compliance standards, and ROI, so buyers trust you instantly.
+      </span>
+    ),
+  },
+  {
+    id: "02",
+    title: "Organic Search Ranking",
+    description: (
+      <span>
+        <span className="text-[#253844] font-semibold">
+          If you’re not on Page 1 for engineering keywords, you’re invisible.
+        </span>{" "}
+        <br />
+        Our “Search Engine Optimization (SEO)” strategy targets exact phrases
+        procurement teams search (e.g., “high-torque gearbox suppliers ISO
+        9001”).
+      </span>
+    ),
+  },
+  {
+    id: "03",
+    title: "Performance-Driven PPC Marketing",
+    description: (
+      <span className="">
+        <span className="text-[#253844] font-semibold ">
+          Generic ads burn budgets. Ours only target ready-to-buy engineers.
+        </span>{" "}
+        <br />
+        Pay-per-click (PPC) Ads optimized for Business-to-business (B2B)
+        purchase intent, with landing pages that convert 3X better than industry
+        averages.
+      </span>
+    ),
+  },
+  {
+    id: "04",
+    title: "Technical Video Marketing",
+    description: (
+      <span>
+        <span className="text-[#253844] font-semibold">
+          Generic data-sheets can bore buyers. Demo videos engage better.
+        </span>{" "}
+        <br />
+        We produce animations & plant walkthroughs with value-focused visual
+        storytelling, cutting sales cycles by 50%, and improving conversions
+        dramatically.
+      </span>
+    ),
+  },
+];
+
+export default function ServicesSection() {
+  return (
+    <section className="py-16 px-[5%] max mx-auto">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h2 className="h2t text-[#253844] leading-[135%]">
+          Poor Digital Presence Can Make <br /> You Lose 80% Lead Conversions.
+          <br />
+          Here’s How We Fix It!
+        </h2>
+        <p className="mt-4 para font-normal text-[#404A50]">
+          Olio Global AdTech offers B2B digital marketing services that make
+          your online persona speak <br /> the language of engineers and
+          procurement teams.
+        </p>
+      </div>
+
+      {/* Services List */}
+      <div className="space-y-8">
+        {services.map((svc, idx) => (
+          <div
+            key={svc.id}
+            className={`md:flex gap-5 md:items-start ${
+              idx > 0 ? "pt-8 border-t border-[#D5D5D5]" : ""
+            }`}
+          >
+            <div className="md:w-1/3 flex-shrink-0 flex items-center">
+              <span className="text-[#EE314E] para2 mr-4">{svc.id}</span>
+              <h3 className="font-semibold text-[#253844] text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px]">
+                {svc.title}
+              </h3>
+            </div>
+
+            {/* Description */}
+            <div className="md:w-2/3 mt-4 md:mt-0">
+              <p className="para text-[#404A50] eading-[160%]">
+                {svc.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
