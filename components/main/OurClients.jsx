@@ -18,14 +18,14 @@ const topLogos = [
 
 const bottomLogos = [
   "/icon/p9.png",
-  "/icon/p8.png",
-  "/icon/p7.png",
-  "/icon/p6.png",
-  "/icon/p5.png",
-  "/icon/p4.png",
-  "/icon/p3.png",
-  "/icon/p2.png",
   "/icon/p1.png",
+  "/icon/p3.png",
+  "/icon/p5.png",
+  "/icon/p8.png",
+  "/icon/p4.png",
+  "/icon/p7.png",
+  "/icon/p2.png",
+  "/icon/p6.png",
 ];
 
 const LogoCarouselRow1 = ({ logos, reverse = false }) => {

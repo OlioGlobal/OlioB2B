@@ -26,7 +26,7 @@ const Header = () => {
     isTransparentPage && !scrolled ? "bg-transparent" : "bg-white shadow-md";
 
   const logoSrc =
-    isTransparentPage && !scrolled ? "/icon/olio.png" : "/icon/logo2.png";
+    isTransparentPage && !scrolled ? "/icon/o2.png" : "/icon/logo2.png";
 
   const linkColor =
     isTransparentPage && !scrolled ? "text-white" : "text-[#253844]";
