@@ -19,7 +19,7 @@ const comparisonData = {
     ],
   },
   right: {
-    header: "Olio Global AdTech",
+    header: <span className="font-bold">Olio Global AdTech</span>,
     points: [
       {
         text: "We specialize in B2B manufacturing & engineering",
@@ -80,7 +80,6 @@ const ComparisonTable = () => {
             </div>
           </div>
 
-          {/* Right Column */}
           <div className="flex justify-center flex-col gap-5 bg-[#253844] text-white border border-gray-800 p-6 sm:p-8  rounded-t-none rounded-[10px] md:rounded-[10px] -mt-4 -mb-4 md:-my-6">
             <p className="text-[18px] text-[#ffffff] font-semibold">
               {right.header}

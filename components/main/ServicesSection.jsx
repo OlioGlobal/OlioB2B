@@ -5,7 +5,12 @@ import { motion } from "framer-motion";
 const services = [
   {
     id: "01",
-    title: "High-Conversion Website Redesign",
+    title: (
+      <span>
+        High-Conversion <br className="hidden md:block" />{" "}
+        <span className="text-[#EE314E]">Website Redesign.</span>
+      </span>
+    ),
     description: (
       <span>
         <span className="text-[#253844] font-semibold">
@@ -19,7 +24,12 @@ const services = [
   },
   {
     id: "02",
-    title: "Organic Search Ranking",
+    title: (
+      <span>
+        Organic <br className="hidden md:block" />{" "}
+        <span className="text-[#EE314E]">Search Ranking.</span>
+      </span>
+    ),
     description: (
       <span>
         <span className="text-[#253844] font-semibold">
@@ -34,7 +44,12 @@ const services = [
   },
   {
     id: "03",
-    title: "Performance-Driven PPC Marketing",
+    title: (
+      <span>
+        Performance-Driven <br className="hidden md:block" />{" "}
+        <span className="text-[#EE314E]">PPC Marketing.</span>
+      </span>
+    ),
     description: (
       <span>
         <span className="text-[#253844] font-semibold">
@@ -49,7 +64,12 @@ const services = [
   },
   {
     id: "04",
-    title: "Technical Video Marketing",
+    title: (
+      <span>
+        Technical <br className="hidden md:block" />{" "}
+        <span className="text-[#EE314E]">Video Marketing.</span>
+      </span>
+    ),
     description: (
       <span>
         <span className="text-[#253844] font-semibold">
@@ -92,7 +112,7 @@ export default function ServicesSection() {
         <h2 className="h2t text-[#253844] leading-[135%]">
           Poor Digital Presence Can Make <br /> You Lose 80% Lead Conversions.
           <br />
-          Here’s How We Fix It!
+          <span className="text-[#808892]">Here’s How We Fix It!</span>
         </h2>
         <p className="mt-4 para font-normal text-[#404A50]">
           Olio Global AdTech offers B2B digital marketing services that make
@@ -117,9 +137,9 @@ export default function ServicesSection() {
               idx > 0 ? "pt-8 border-t border-[#D5D5D5]" : ""
             }`}
           >
-            <div className="md:w-1/3 flex-shrink-0 flex items-center">
+            <div className="md:w-1/3 flex-shrink-0 flex items-baseline">
               <span className="text-[#EE314E] para2 mr-4">{svc.id}</span>
-              <h3 className="font-semibold text-[#253844] text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px]">
+              <h3 className=" font-bold text-[#253844] text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] leading-[160%]">
                 {svc.title}
               </h3>
             </div>

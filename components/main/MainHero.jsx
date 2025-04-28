@@ -21,7 +21,7 @@ const Hero = () => {
         </div>
 
         {/* Max-width content container */}
-        <div className="z-10 max w-full px-[5%]">
+        <div className="z-10 max w-full lg:mt-10 px-[5%]">
           <div className=" flex flex-col md:flex-row justify-between gap-0 md:gap-8">
             <div className="md:w-[50%] flex flex-col items-start gap-2 md:gap-10">
               <h1 className="h1t leading-[105%] text-[#ffffff]">

@@ -5,41 +5,27 @@ import Autoplay from "embla-carousel-autoplay";
 
 // Array of actual image paths (custom filenames)
 const topLogos = [
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
+  "/icon/p1.png",
+  "/icon/p2.png",
+  "/icon/p3.png",
+  "/icon/p4.png",
+  "/icon/p5.png",
+  "/icon/p6.png",
+  "/icon/p7.png",
+  "/icon/p8.png",
+  "/icon/p9.png",
 ];
 
 const bottomLogos = [
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
-  "/icon/nexgen.png",
+  "/icon/p9.png",
+  "/icon/p8.png",
+  "/icon/p7.png",
+  "/icon/p6.png",
+  "/icon/p5.png",
+  "/icon/p4.png",
+  "/icon/p3.png",
+  "/icon/p2.png",
+  "/icon/p1.png",
 ];
 
 const LogoCarouselRow1 = ({ logos, reverse = false }) => {
@@ -73,9 +59,9 @@ const LogoCarouselRow1 = ({ logos, reverse = false }) => {
                 <Image
                   src={src}
                   alt={`Logo ${index + 1}`}
-                  width={180}
-                  height={190}
-                  className="object-contain w-full h-full"
+                  width={250}
+                  height={250}
+                  className="object-contain h-[50px] md:h-[100px]  w-full "
                 />
               </div>
             </div>
@@ -88,7 +74,7 @@ const LogoCarouselRow1 = ({ logos, reverse = false }) => {
 
 export default function Our_clients() {
   return (
-    <div className="py-16 space-y-8   max px-[5%] ">
+    <div className="py-16 md:space-y-8   max px-[5%] ">
       <div className="text-center mb-8">
         <h2 className="font-bold mb-2 text-[#163123] h2t text-center  leading-[135%] ">
           Our Clients

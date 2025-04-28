@@ -96,8 +96,10 @@ const ManufacturerCarousel = () => {
   return (
     <div className="max px-[5%] mx-auto py-16">
       <div className="mb-8">
-        <h2 className="h2t font-semibold text-[#253844] leading-[135%]">
-          Real Results for Manufacturers Like You
+        <h2 className="h2t font-semibold text-[#253844] mb-2 leading-[135%]">
+          From 6X High-Quality Lead Growth to Being{" "}
+          <br className="hidden md:block" /> Unexpectedly Recognized in{" "}
+          <span className="text-[#808892]">Trade Shows</span>
         </h2>
         <p className="para text-[#404A50] ">
           Read Our Business Transformation Stories

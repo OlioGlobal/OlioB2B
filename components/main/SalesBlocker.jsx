@@ -5,25 +5,25 @@ const SalesBlockers = () => {
   const blockers = [
     {
       icon: "/icon/s1.png",
-      heading: "Heading",
+      heading: "You’re Invisible for New Clients",
       description:
-        "You're the experts, but the new potential clients can't see it!",
+        "You're the experts, but the new potential clients can’t see it!",
     },
     {
       icon: "/icon/s2.png",
-      heading: "Heading",
+      heading: "Outdated Online Presence",
       description:
-        "You bid on projects but keep losing it to clients with more attractive online presence",
+        "You bid on projects but keep losing it to competitors with more attractive online presence",
     },
     {
       icon: "/icon/s3.png",
-      heading: "Heading",
+      heading: "You’re Chasing Cold Leads",
       description:
         "Your sales team spend too much time on chasing, not on closing deals",
     },
     {
       icon: "/icon/s4.png",
-      heading: "Heading",
+      heading: "Your Growth Hit the Glass Ceiling",
       description:
         "Stagnated numbers (no growth) with only repeated business through referrals",
     },

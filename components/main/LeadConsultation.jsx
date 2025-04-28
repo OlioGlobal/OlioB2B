@@ -38,7 +38,16 @@ export default function LeadConsultation() {
   const closePopup = () => setIsPopupOpen(false);
 
   return (
-    <div className="bg-[#253844]  py-16">
+    <div
+      className="
+    bg-[#253844]                       
+    bg-[url('/icon/bg1.png')]        
+    bg-cover                             
+    bg-center                          
+    bg-no-repeat                        
+    py-16
+  "
+    >
       <div className="text-white max px-[5%] w-full">
         <div className="mx-auto">
           <div className="mb-12">
