@@ -46,55 +46,69 @@ const ManufacturerCarousel = () => {
 
   const cards = [
     {
-      category: "Food Manufacturing",
-      image: "/icon/food.png", // Replace with your actual image paths
-      title: "514% More Qualified Leads in 5 Months",
-      description:
-        "How we repositioned a niche manufacturer as the go-to expert for food processing machinery and hygiene stations?",
-      increase: "130%",
-      increaseText: "Increase in Leads",
-    },
-    {
-      category: "Food Manufacturing",
+      category: "Gulmohar Packtech",
       image: "/icon/food.png",
-      title: "From No-Buzz to Trade-Show Stars",
+      title: "287% More Qualified Leads in 6 Months",
       description:
-        "Re-branding that made distributors chase the equipment manufacturers instead of the other way around",
-      increase: "130%",
-      increaseText: "Increase in Leads",
-    },
-
-    {
-      category: "Food Manufacturing",
-      image: "/icon/food.png", // Replace with your actual image paths
-      title: "514% More Qualified Leads in 5 Months",
-      description:
-        "How we repositioned a niche manufacturer as the go-to expert for food processing machinery and hygiene stations?",
-      increase: "130%",
-      increaseText: "Increase in Leads",
+        "How we transformed online visibility for Gulmohar PackTech, making them preferred industrial packaging partners",
+      increase: "156%",
+      increaseText: "Organic traffic from engineering buyers",
+      isIncrease: true, // Added
     },
     {
-      category: "Food Manufacturing",
+      category: "Nexgen Machines",
       image: "/icon/food.png",
-      title: "From No-Buzz to Trade-Show Stars",
+      title: "312% Boost in Food Industry Leads",
       description:
-        "Re-branding that made distributors chase the equipment manufacturers instead of the other way around",
-      increase: "130%",
-      increaseText: "Increase in Leads",
+        "How we made 5,000+ installations speak for themselves with technical SEO & video marketing?",
+      increase: "78%",
+      increaseText: "International inquiries from 5 key markets",
+      isIncrease: true,
     },
     {
-      category: "Food Manufacturing",
+      category: "Java Paper",
       image: "/icon/food.png",
-      title: "From No-Buzz to Trade-Show Stars",
+      title: "Sustainable Paper Manufacturers Captured the Commodity Market",
       description:
-        "Re-branding that made distributors chase the equipment manufacturers instead of the other way around",
-      increase: "130%",
-      increaseText: "Increase in Leads",
+        "How content marketing broke through a commoditized market for the sustainable paper production company?",
+      increase: "27%",
+      increaseText: "Market share in premium segments",
+      isIncrease: true,
+    },
+    {
+      category: "Rhein Main Überdachungen",
+      image: "/icon/food.png",
+      title: "German Roofing Specialists Got 196% Higher Local Inquiries",
+      description:
+        "How geo-targeted German SEO expanded the roofing company’s service business?",
+      increase: "62%",
+      increaseText: "Improvement in sales conversion rates",
+      isIncrease: true,
+    },
+    {
+      category: "Sanfreight International",
+      image: "/icon/food.png",
+      title: "263% Addition in Route-Specific RFQs for the Logistics Company",
+      description:
+        "How niche targeting beats larger competitors’ budgets for the global freight company?",
+      increase: "57%",
+      increaseText: "Acquisition costs, leading to higher profits",
+      isIncrease: false, // Suppose decrease here (example)
+    },
+    {
+      category: "Parason Machinery",
+      image: "/icon/food.png",
+      title: "Global Paper Mills Got 307% Boost in Global Leads",
+      description:
+        "How technical content and LinkedIn campaigns shortened sales cycles by 71% for paper manufacturing machinery suppliers?",
+      increase: "168%",
+      increaseText: "International inquiries from from 7 key markets",
+      isIncrease: true,
     },
   ];
 
   return (
-    <div className="max px-[5%] mx-auto py-16">
+    <div className="max px-[5%] mx-auto rm">
       <div className="mb-8">
         <h2 className="h2t font-semibold text-[#253844] mb-2 leading-[135%]">
           From 6X High-Quality Lead Growth to Being{" "}
@@ -142,7 +156,7 @@ const ManufacturerCarousel = () => {
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="lg:text-[32px] md:text-[28px] sm:text-[25px] text-[22px] font-semibold text-[#253844]">
-                            {card.increase} ↑
+                            {card.increase} {card.isIncrease ? "↑" : "↓"}
                           </p>
                           <p className="text-[16px] text-[#404A50]">
                             {card.increaseText}

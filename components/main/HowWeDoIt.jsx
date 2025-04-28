@@ -39,7 +39,7 @@ const HowWeDoIt = () => {
   };
 
   return (
-    <section className="py-16 max bg-white px-[5%]">
+    <section className="rm max bg-white px-[5%]">
       <div className=" flex flex-col gap-8  md:flex-row justify-between items-center">
         <div className="md:w-[50%] flex justify-start items-start">
           <Image

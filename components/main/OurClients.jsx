@@ -74,7 +74,7 @@ const LogoCarouselRow1 = ({ logos, reverse = false }) => {
 
 export default function Our_clients() {
   return (
-    <div className="py-16 md:space-y-8   max px-[5%] ">
+    <div className="rm md:space-y-8   max px-[5%] ">
       <div className="text-center mb-8">
         <h2 className="font-bold mb-2 text-[#163123] h2t text-center  leading-[135%] ">
           Our Clients

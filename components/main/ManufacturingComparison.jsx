@@ -42,7 +42,7 @@ const ComparisonTable = () => {
   const right = comparisonData.right;
 
   return (
-    <div className="flex flex-col max lg:flex-row px-[5%] gap-8 py-16">
+    <div className="flex flex-col max lg:flex-row px-[5%] gap-8 rm">
       <div className="lg:w-[40%] flex flex-col gap-5 justify-center">
         <h2 className="h2t text-[#253844] leading-[135%]">
           Why Most <br className="hidden lg:block" /> Manufacturing Firms{" "}

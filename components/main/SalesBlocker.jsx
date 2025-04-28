@@ -30,7 +30,7 @@ const SalesBlockers = () => {
   ];
 
   return (
-    <section className="py-16 max px-[5%] bg-white">
+    <section className="rm max px-[5%] bg-white">
       <div className=" mx-auto">
         <div className="mb-12">
           <h2 className="h2t mb-2 text-[#253844] text-center leading-[135%]">

@@ -87,7 +87,6 @@ export default function ThankYouPage() {
       });
       if (!res.ok) throw new Error("Network error");
 
-      // clear everything so there's no stale state
       updateFormData({
         name: "",
         email: "",
@@ -116,10 +115,10 @@ export default function ThankYouPage() {
 
       <div className=" px-[5%] max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
         <div className="flex flex-col mt-2">
-          <p className="text-[#404A50] text-[24px] leading-[160%] font-semibold mb-4">
+          <p className="text-[#404A50] text-[24px] leading-[160%] font-medium mb-4">
             Thank you for enquiring,{" "}
-            <span className="font-medium">{formData.name}</span>. <br /> Lorem
-            ipsum dolor is a dummy text.
+            <span className="font-semibold">{formData.name}</span>. <br />
+            We’re excited to help you take your business to the next level!
           </p>
           <h1 className="h1t leading-[109.00000000000001%] text-[#211735] font-bold">
             Scale Your Sales Flow 10X Faster&ndash;Seamlessly!
@@ -129,14 +128,16 @@ export default function ThankYouPage() {
           </p>
         </div>
 
-        <div className="bg-white border-[1px] border-[#CBCBCB] rounded-lg px-4 py-4 lg:py-8 lg:px-6 shadow-sm">
+        <div className="bg-white flex justify-center items-center border-[1px] border-[#CBCBCB] rounded-lg px-4 py-4 lg:py-8 lg:px-6 shadow-sm">
           {done ? (
             <div className="text-center">
-              <p className="text-2xl font-semibold text-gray-800 mb-4">
+              <p className="text-3xl  font-semibold text-gray-800 mb-4">
                 🎉 Thank you!
               </p>
-              <p className="text-gray-700">
-                We ve received your details and will be in touch shortly.
+              <p className="text-gray-700 para">
+                We’ll review your details and contact you within 24 hours to
+                discuss how we can boost your digital presence,
+                and your revenue.
               </p>
             </div>
           ) : (

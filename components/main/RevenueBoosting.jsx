@@ -18,7 +18,7 @@ const RevenueBoostingCard = () => {
   ];
 
   return (
-    <div className="px-[5%] max py-16 rounded-[10px]">
+    <div className="px-[5%] max rm rounded-[10px]">
       <div
         className="rounded-[10px] p-4 py-10 sm:p-8 md:p-16 flex flex-col justify-center items-center text-white bg-cover bg-center"
         style={{ backgroundImage: "url('/icon/bg.png')" }}

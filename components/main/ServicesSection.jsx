@@ -100,7 +100,7 @@ const itemVariants = {
 
 export default function ServicesSection() {
   return (
-    <section className="py-16 px-[5%] max mx-auto">
+    <section className="rm px-[5%] max mx-auto">
       {/* Header */}
       <motion.div
         className="text-center mb-12"

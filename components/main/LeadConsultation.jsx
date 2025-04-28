@@ -45,7 +45,7 @@ export default function LeadConsultation() {
     bg-cover                             
     bg-center                          
     bg-no-repeat                        
-    py-16
+   rm
   "
     >
       <div className="text-white max px-[5%] w-full">
