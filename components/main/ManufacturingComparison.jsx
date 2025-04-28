@@ -19,7 +19,7 @@ const comparisonData = {
     ],
   },
   right: {
-    header: <span className="font-bold">Olio Global AdTech</span>,
+    header: <span className="font-bold text-[22px]">Olio Global AdTech</span>,
     points: [
       {
         text: "We specialize in B2B manufacturing & engineering",

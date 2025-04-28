@@ -13,28 +13,21 @@ const Header = () => {
   const openPopup = () => setIsPopupOpen(true);
   const closePopup = () => setIsPopupOpen(false);
 
-  // 1. Define which routes get a transparent header
   const transparentPaths = ["/", "/landing", "/home-with-bg"];
   const isTransparentPage = transparentPaths.includes(router.pathname);
 
-  // 2. Track scroll to switch to solid on transparent pages
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // 3. Decide background class
   const bgClass =
     isTransparentPage && !scrolled ? "bg-transparent" : "bg-white shadow-md";
 
-  // 4. Pick logo based on same condition
   const logoSrc =
-    isTransparentPage && !scrolled
-      ? "/icon/olio.png" // white logo
-      : "/icon/logo2.png"; // gray logo
+    isTransparentPage && !scrolled ? "/icon/olio.png" : "/icon/logo2.png";
 
-  // 5. Decide link text color
   const linkColor =
     isTransparentPage && !scrolled ? "text-white" : "text-[#253844]";
 
