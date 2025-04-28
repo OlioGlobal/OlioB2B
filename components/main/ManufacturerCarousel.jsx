@@ -57,30 +57,13 @@ const ManufacturerCarousel = () => {
     {
       category: "Food Manufacturing",
       image: "/icon/food.png",
-      title: "514% More Qualified Leads in 5 Months",
+      title: "From No-Buzz to Trade-Show Stars",
       description:
-        "How we repositioned a niche manufacturer as the go-to expert for food processing machinery and hygiene stations?",
+        "Re-branding that made distributors chase the equipment manufacturers instead of the other way around",
       increase: "130%",
       increaseText: "Increase in Leads",
     },
-    {
-      category: "Food Manufacturing",
-      image: "/icon/food.png",
-      title: "514% More Qualified Leads in 5 Months",
-      description:
-        "How we repositioned a niche manufacturer as the go-to expert for food processing machinery and hygiene stations?",
-      increase: "130%",
-      increaseText: "Increase in Leads",
-    },
-    {
-      category: "Food Manufacturing",
-      image: "/icon/food.png",
-      title: "514% More Qualified Leads in 5 Months",
-      description:
-        "How we repositioned a niche manufacturer as the go-to expert for food processing machinery and hygiene stations?",
-      increase: "130%",
-      increaseText: "Increase in Leads",
-    },
+
     {
       category: "Food Manufacturing",
       image: "/icon/food.png", // Replace with your actual image paths
@@ -93,27 +76,18 @@ const ManufacturerCarousel = () => {
     {
       category: "Food Manufacturing",
       image: "/icon/food.png",
-      title: "514% More Qualified Leads in 5 Months",
+      title: "From No-Buzz to Trade-Show Stars",
       description:
-        "How we repositioned a niche manufacturer as the go-to expert for food processing machinery and hygiene stations?",
+        "Re-branding that made distributors chase the equipment manufacturers instead of the other way around",
       increase: "130%",
       increaseText: "Increase in Leads",
     },
     {
       category: "Food Manufacturing",
       image: "/icon/food.png",
-      title: "514% More Qualified Leads in 5 Months",
+      title: "From No-Buzz to Trade-Show Stars",
       description:
-        "How we repositioned a niche manufacturer as the go-to expert for food processing machinery and hygiene stations?",
-      increase: "130%",
-      increaseText: "Increase in Leads",
-    },
-    {
-      category: "Food Manufacturing",
-      image: "/icon/food.png",
-      title: "514% More Qualified Leads in 5 Months",
-      description:
-        "How we repositioned a niche manufacturer as the go-to expert for food processing machinery and hygiene stations?",
+        "Re-branding that made distributors chase the equipment manufacturers instead of the other way around",
       increase: "130%",
       increaseText: "Increase in Leads",
     },

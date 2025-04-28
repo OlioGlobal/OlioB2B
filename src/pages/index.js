@@ -9,6 +9,7 @@ import Our_clients from "../../components/main/OurClients";
 import RevenueBoostingCard from "../../components/main/RevenueBoosting";
 import SalesBlockers from "../../components/main/SalesBlocker";
 import ServicesSection from "../../components/main/ServicesSection";
+import StickyFooter2 from "../../components/Stickyfooter";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <RevenueBoostingCard />
       <ManufacturerCarousel />
       <LeadConsultation />
+      <StickyFooter2 />
     </div>
   );
 }

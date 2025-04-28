@@ -27,7 +27,7 @@ export default function LeadConsultation() {
           "How we helped businesses like yours get 3X business growth",
       },
     ],
-    cta: "Connect with Us",
+    cta: "Schedule a Call",
     partners: [
       { name: "Google Partner", logo: "/icon/google.png" },
       { name: "Meta Business Partner", logo: "/icon/meta.png" },
@@ -38,8 +38,8 @@ export default function LeadConsultation() {
   const closePopup = () => setIsPopupOpen(false);
 
   return (
-    <div className="bg-[#253844] py-16">
-      <div className="text-white px-[5%] w-full">
+    <div className="bg-[#253844]  py-16">
+      <div className="text-white max px-[5%] w-full">
         <div className="mx-auto">
           <div className="mb-12">
             <h2 className="h2t leading-[135%]">

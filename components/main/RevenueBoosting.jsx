@@ -5,15 +5,15 @@ const RevenueBoostingCard = () => {
   const data = [
     {
       id: "01",
-      text: "How strong branding makes trust-building easier with engineers & procurement teams.",
+      text: "A strong and trustworthy online presence = less skepticism upfront.",
     },
     {
       id: "02",
-      text: "Why companies with authority close deals 3X faster (even at premium prices).",
+      text: "Procurement teams and other buyers reach out already understanding your value.",
     },
     {
       id: "03",
-      text: 'How Our "Pre-Sell" framework works: Make clients come to you already convinced.',
+      text: "No more racing to the bottom against cheap competitors.",
     },
   ];
 

@@ -18,24 +18,22 @@ const HowWeDoIt = () => {
       id: "02",
       question: "Flood Your Pipeline with Ready-to-Buy Leads",
       answers: [
-        "Get on Page 1 for keywords engineers & procurement teams actually search.",
-        "Redesign so your expertise is obvious in 5 seconds.",
+        "Ads that only target decision-makers actively researching solutions like yours.",
+        "Engineers/Procurement teams trust data. We highlight your specs, ROI, and reliability.",
       ],
     },
     {
       id: "03",
       question: "Shorten Sales Cycles by 50%+",
       answers: [
-        "Get on Page 1 for keywords engineers & procurement teams actually search.",
-        "Redesign so your expertise is obvious in 5 seconds.",
+        "Leads come in already convinced (less haggling, faster closes).",
+        "Stronger online presence = dealers seek you out (no more cold outreach).",
       ],
     },
   ];
 
-  // State to track which FAQ item is expanded
   const [expandedId, setExpandedId] = useState("01");
 
-  // Toggle function for expanding/collapsing
   const toggleExpand = (id) => {
     setExpandedId(expandedId === id ? null : id);
   };

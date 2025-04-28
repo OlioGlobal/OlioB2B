@@ -60,7 +60,7 @@ export default function LeadFormPopup({ isOpen, onClose }) {
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 bg-black/10 bg-opacity-20 flex items-center justify-center z-50">
-      <div className="bg-white  p-8 max-w-md w-full">
+      <div className="bg-white mx-[4%] p-5 md:p-8 max-w-md w-full">
         {/* Header */}
         <div className="flex justify-between items-center mb-5">
           <h2 className="para2 font-semibold text-[#253844]">

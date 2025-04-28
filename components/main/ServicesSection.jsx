@@ -1,5 +1,6 @@
 // components/ServicesSection.jsx
-import React from "react";
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -35,8 +36,8 @@ const services = [
     id: "03",
     title: "Performance-Driven PPC Marketing",
     description: (
-      <span className="">
-        <span className="text-[#253844] font-semibold ">
+      <span>
+        <span className="text-[#253844] font-semibold">
           Generic ads burn budgets. Ours only target ready-to-buy engineers.
         </span>{" "}
         <br />
@@ -63,11 +64,31 @@ const services = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 export default function ServicesSection() {
   return (
     <section className="py-16 px-[5%] max mx-auto">
       {/* Header */}
-      <div className="text-center mb-12">
+      <motion.div
+        className="text-center mb-12"
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <h2 className="h2t text-[#253844] leading-[135%]">
           Poor Digital Presence Can Make <br /> You Lose 80% Lead Conversions.
           <br />
@@ -78,13 +99,20 @@ export default function ServicesSection() {
           your online persona speak <br /> the language of engineers and
           procurement teams.
         </p>
-      </div>
+      </motion.div>
 
       {/* Services List */}
-      <div className="space-y-8">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="space-y-8"
+      >
         {services.map((svc, idx) => (
-          <div
+          <motion.div
             key={svc.id}
+            variants={itemVariants}
             className={`md:flex gap-5 md:items-start ${
               idx > 0 ? "pt-8 border-t border-[#D5D5D5]" : ""
             }`}
@@ -98,13 +126,13 @@ export default function ServicesSection() {
 
             {/* Description */}
             <div className="md:w-2/3 mt-4 md:mt-0">
-              <p className="para text-[#404A50] eading-[160%]">
+              <p className="para text-[#404A50] leading-[160%]">
                 {svc.description}
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
