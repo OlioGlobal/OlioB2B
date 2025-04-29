@@ -58,8 +58,8 @@ const Hero = () => {
               />
             </div> */}
 
-              <div className="flex  items-center bg-white/22 p-4 rounded-[10px] gap-4 mt-6 md:mt-0">
-                <div className="flex  gap-4">
+              <div className="flex  items-center justify-center  bg-white/22 p-4 rounded-[10px] gap-4 mt-6 md:mt-0">
+                <div className="flex   items-center justify-center  gap-4">
                   <Image
                     src="/icon/google.png"
                     alt="Hero Image"
