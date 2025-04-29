@@ -1,11 +1,11 @@
 {
-  "/_app": "pages/_app.js",
   "/api/hello": "pages/api/hello.js",
+  "/_error": "pages/_error.js",
   "/api/submit-lead": "pages/api/submit-lead.js",
-  "/api/submit-detailed-info": "pages/api/submit-detailed-info.js",
   "/": "pages/index.html",
   "/thank-you": "pages/thank-you.html",
   "/_document": "pages/_document.js",
-  "/_error": "pages/_error.js",
+  "/_app": "pages/_app.js",
+  "/api/submit-detailed-info": "pages/api/submit-detailed-info.js",
   "/404": "pages/404.html"
 }
