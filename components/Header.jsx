@@ -49,12 +49,12 @@ const Header = () => {
 
           <div className="flex items-center gap-5">
             <nav className="hidden md:flex items-center">
-              <Link
-                href="#features"
-                className={`para font-semibold ${linkColor}`}
+              <button
+                onClick={openPopup}
+                className={`para cursor-pointer font-semibold ${linkColor}`}
               >
                 Take Free Audit
-              </Link>
+              </button>
             </nav>
             <button
               onClick={openPopup}

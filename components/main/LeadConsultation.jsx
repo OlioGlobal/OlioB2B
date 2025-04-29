@@ -118,7 +118,6 @@ export default function LeadConsultation() {
         </div>
       </div>
 
-      {/* Popup Form */}
       <LeadFormPopup isOpen={isPopupOpen} onClose={closePopup} />
     </div>
   );
