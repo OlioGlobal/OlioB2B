@@ -28,11 +28,15 @@ textarea {
   font-family: "DM Sans", sans-serif;
 }
 .btn {
-  @apply bg-[#EE314E] py-[10px] px-[14px] rounded-[10px]   font-semibold hover:bg-red-600;
+  @apply bg-[#EE314E] cursor-pointer py-[12px] px-[15px] rounded-[10px]   font-semibold hover:bg-red-600;
 }
 .max {
   @apply max-w-screen-2xl mx-auto;
 }
 .rm {
   @apply py-8 sm:py-10 md:py-12 lg:py-14;
+}
+::selection {
+  background-color: rgb(238, 49, 78, 0.8);
+  color: white;
 }

@@ -93,23 +93,23 @@ export default function LeadFormPopup({ isOpen, onClose }) {
             {
               name: "name",
               label: "Full Name",
-              placeholder: "Enter Your Full Name",
+              placeholder: "Enter Full Name",
             },
             {
               name: "businessName",
               label: "Business Name",
-              placeholder: "Enter Your Business Name",
+              placeholder: "Enter Business Name",
             },
             {
               name: "email",
               label: "Email",
-              placeholder: "Enter Your Email",
+              placeholder: "Enter Email",
               type: "email",
             },
             {
               name: "phone",
               label: "Phone",
-              placeholder: "Enter Your Phone Number",
+              placeholder: "Enter Phone Number",
               type: "tel",
             },
           ].map(({ name, label, placeholder, type = "text" }) => (
