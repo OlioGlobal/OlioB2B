@@ -107,9 +107,9 @@ export default function LeadConsultation() {
                   <Image
                     src={partner.logo}
                     alt={partner.name}
-                    width={120}
-                    height={50}
-                    className="w-auto"
+                    width={100}
+                    height={40}
+                    className=""
                   />
                 </div>
               ))}

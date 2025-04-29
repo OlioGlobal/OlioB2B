@@ -63,16 +63,16 @@ const Hero = () => {
                   <Image
                     src="/icon/google.png"
                     alt="Hero Image"
-                    width={120}
-                    height={50}
-                    className=" w-auto"
+                    width={100}
+                    height={40}
+                    className=""
                   />
                   <Image
                     src="/icon/meta.png"
                     alt="Hero Image"
-                    width={120}
-                    height={50}
-                    className=" w-auto"
+                    width={100}
+                    height={40}
+                    className=""
                   />
                 </div>
               </div>
