@@ -46,8 +46,8 @@ const ManufacturerCarousel = () => {
 
   const cards = [
     {
-      category: "Gulmohar Packtech",
-      image: "/icon/food.png",
+      category: "",
+      image: "/icon/c1.png",
       title: "287% More Qualified Leads in 6 Months",
       description:
         "How we transformed online visibility for Gulmohar PackTech, making them preferred industrial packaging partners",
@@ -56,8 +56,8 @@ const ManufacturerCarousel = () => {
       isIncrease: true, // Added
     },
     {
-      category: "Nexgen Machines",
-      image: "/icon/food.png",
+      category: "",
+      image: "/icon/c2.png",
       title: "312% Boost in Food Industry Leads",
       description:
         "How we made 5,000+ installations speak for themselves with technical SEO & video marketing?",
@@ -66,8 +66,8 @@ const ManufacturerCarousel = () => {
       isIncrease: true,
     },
     {
-      category: "Java Paper",
-      image: "/icon/food.png",
+      category: "",
+      image: "/icon/c3.png",
       title: "Sustainable Paper Manufacturers Captured the Commodity Market",
       description:
         "How content marketing broke through a commoditized market for the sustainable paper production company?",
@@ -76,8 +76,8 @@ const ManufacturerCarousel = () => {
       isIncrease: true,
     },
     {
-      category: "Rhein Main Überdachungen",
-      image: "/icon/food.png",
+      category: "",
+      image: "/icon/c4.png",
       title: "German Roofing Specialists Got 196% Higher Local Inquiries",
       description:
         "How geo-targeted German SEO expanded the roofing company’s service business?",
@@ -86,8 +86,8 @@ const ManufacturerCarousel = () => {
       isIncrease: true,
     },
     {
-      category: "Sanfreight International",
-      image: "/icon/food.png",
+      category: "",
+      image: "/icon/c5.png",
       title: "263% Addition in Route-Specific RFQs for the Logistics Company",
       description:
         "How niche targeting beats larger competitors’ budgets for the global freight company?",
@@ -96,8 +96,8 @@ const ManufacturerCarousel = () => {
       isIncrease: false, // Suppose decrease here (example)
     },
     {
-      category: "Parason Machinery",
-      image: "/icon/food.png",
+      category: "",
+      image: "/icon/c6.png",
       title: "Global Paper Mills Got 307% Boost in Global Leads",
       description:
         "How technical content and LinkedIn campaigns shortened sales cycles by 71% for paper manufacturing machinery suppliers?",
@@ -129,8 +129,8 @@ const ManufacturerCarousel = () => {
                 className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%]  px-2  md:pr-6"
               >
                 <div className="rounded-lg border border-[#E7E9ED] overflow-hidden h-full flex flex-col">
-                  <div className="relative  h-48 w-full">
-                    <div className="absolute rounded-2xl  inset-0 bg-red-500/90 z-10 flex p-5">
+                  <div className="relative h-48 w-full overflow-hidden group">
+                    <div className="absolute rounded-2xl inset-0 z-10 flex p-5">
                       <div className="text-center text-white font-medium">
                         <p className="para">{card.category}</p>
                       </div>
@@ -141,7 +141,7 @@ const ManufacturerCarousel = () => {
                       layout="fill"
                       objectFit="cover"
                       placeholder="blur"
-                      className="rounded-[10px]"
+                      className="rounded-[10px] transition-transform duration-500 ease-in-out group-hover:scale-110"
                       blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
                     />
                   </div>
