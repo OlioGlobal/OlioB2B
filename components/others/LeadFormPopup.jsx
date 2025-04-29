@@ -22,12 +22,25 @@ export default function LeadFormPopup({ isOpen, onClose }) {
 
   const validate = () => {
     const errs = {};
+
     if (!values.name.trim()) errs.name = "Full Name is required";
     if (!values.businessName.trim())
       errs.businessName = "Business Name is required";
-    if (!/\S+@\S+\.\S+/.test(values.email)) errs.email = "Valid email required";
-    if (!/^\d{10}$/.test(values.phone.replace(/\D/g, "")))
-      errs.phone = "10-digit phone required";
+
+    if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errs.email = "Valid email required";
+    }
+
+    const cleanedPhone = values.phone.replace(/\D/g, ""); // Remove non-digits
+
+    if (!cleanedPhone) {
+      errs.phone = "Mobile number is required.";
+    } else if (!/^\d{10}$/.test(cleanedPhone)) {
+      errs.phone = "Mobile number must be exactly 10 digits";
+    } else if (!/^[6-9]\d{9}$/.test(cleanedPhone)) {
+      errs.phone = "Enter a valid Mobile number";
+    }
+
     return errs;
   };
 
@@ -108,8 +121,8 @@ export default function LeadFormPopup({ isOpen, onClose }) {
             },
             {
               name: "phone",
-              label: "Phone",
-              placeholder: "Enter Phone Number",
+              label: "Mobile",
+              placeholder: "Enter Mobile Number",
               type: "tel",
             },
           ].map(({ name, label, placeholder, type = "text" }) => (
