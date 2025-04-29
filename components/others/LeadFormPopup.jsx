@@ -133,6 +133,7 @@ export default function LeadFormPopup({ isOpen, onClose }) {
               <input
                 type={type}
                 name={name}
+                id={name}
                 value={values[name]}
                 onChange={handleChange}
                 placeholder={placeholder}
