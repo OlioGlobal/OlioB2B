@@ -61,6 +61,11 @@ export default function LeadFormPopup({ isOpen, onClose }) {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error();
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "leadFormSubmissionSuccess",
+        formId: "leadFormPopup",
+      });
       onClose?.();
       router.push(`/thank-you?id=${uniqueId}`);
     } catch {
