@@ -127,7 +127,7 @@ export default async function handler(req, res) {
     const formData = req.body;
     const payload = { ...formData, action: "submit-detailed-info" };
     try {
-      const res = await fetch(process.env.NEXT_PUBLIC_GS, {
+      const res = await fetch(process.env.GS, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

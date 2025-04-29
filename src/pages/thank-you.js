@@ -18,7 +18,6 @@ export default function ThankYouPage() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
 
-  // Redirect back home if ID is missing/mismatched
   useEffect(() => {
     if (router.isReady && (!id || formData.uniqueId !== id)) {
       router.push("/");
@@ -41,24 +40,26 @@ export default function ThankYouPage() {
 
   const validate = () => {
     const errs = {};
-    // URL validation
-    if (!details.websiteUrl.trim()) {
-      errs.websiteUrl = "Website URL is required";
-    } else {
+
+    if (
+      details.websiteUrl.trim() !== "" &&
+      details.websiteUrl.trim().toLowerCase() !== "na"
+    ) {
       try {
         new URL(details.websiteUrl);
       } catch {
         errs.websiteUrl = "Please enter a valid URL";
       }
     }
-    // urgency (radio)
+
     if (!details.urgency) {
       errs.urgency = "Please select how urgent this is";
     }
-    // challenges (checkbox)
+
     if (details.challenges.length === 0) {
       errs.challenges = "Please select at least one challenge";
     }
+
     return errs;
   };
 
@@ -73,8 +74,13 @@ export default function ThankYouPage() {
     setSubmitting(true);
 
     try {
-      // store the extra details in context
-      updateFormData(details);
+      const updatedDetails = {
+        ...details,
+        websiteUrl:
+          details.websiteUrl.trim() === "" ? "NA" : details.websiteUrl,
+      };
+
+      updateFormData(updatedDetails);
 
       const res = await fetch("/api/submit-detailed-info", {
         method: "POST",
@@ -82,7 +88,7 @@ export default function ThankYouPage() {
         body: JSON.stringify({
           uniqueId: formData.uniqueId,
           ...formData,
-          ...details,
+          ...updatedDetails,
         }),
       });
       if (!res.ok) throw new Error("Network error");
@@ -128,7 +134,7 @@ export default function ThankYouPage() {
           </p>
         </div>
 
-        <div className="bg-white flex justify-center items-center border-[1px] border-[#CBCBCB] rounded-lg px-4 py-4 lg:py-8 lg:px-6 shadow-sm">
+        <div className="bg-white  w-full flex justify-center items-center border-[1px] border-[#CBCBCB] rounded-lg px-4 py-4 lg:py-8 lg:px-6 shadow-sm">
           {done ? (
             <div className="text-center">
               <p className="text-3xl  font-semibold text-gray-800 mb-4">
@@ -141,8 +147,8 @@ export default function ThankYouPage() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-6 w-full ">
+              <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
                   { label: "Full Name", value: formData.name },
                   { label: "Email", value: formData.email },
@@ -281,11 +287,6 @@ export default function ThankYouPage() {
                     <li className="text-[#404A50] para"> {opt.label}</li>
                   </ul>
                 ))}
-                {errors.challenges && (
-                  <p className="mt-1 text-red-500 text-sm">
-                    {errors.challenges}
-                  </p>
-                )}
               </fieldset>
 
               {/* Submit */}

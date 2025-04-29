@@ -60,7 +60,7 @@ export default async function handler(req, res) {
 
   // Send to Google Sheets
   try {
-    const sheetResp = await fetch(process.env.NEXT_PUBLIC_GS, {
+    const sheetResp = await fetch(process.env.GS, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...form, action: "submit-lead" }),
