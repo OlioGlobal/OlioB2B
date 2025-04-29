@@ -100,8 +100,7 @@ export default function LeadFormPopup({ isOpen, onClose }) {
           </button>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id="form">
           {[
             {
               name: "name",
@@ -153,6 +152,7 @@ export default function LeadFormPopup({ isOpen, onClose }) {
 
           <button
             type="submit"
+            id="sub"
             disabled={submitting}
             className=" btn para text-[#ffffff]"
           >
