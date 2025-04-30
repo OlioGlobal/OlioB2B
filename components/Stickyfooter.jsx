@@ -59,15 +59,15 @@ const StickyFooter2 = () => {
             <Image
               src="/icon/whatsapp.png"
               alt="WhatsApp"
-              width={40}
-              height={40}
+              width={50}
+              height={50}
             />
           </div>
         </Link>
 
         <Link href="tel:+919930999834" passHref>
           <div className="bg-[#ffffff]  rounded-full shadow-lg hover:scale-105 transform transition duration-200">
-            <Image src="/icon/phone.png" alt="Phone" width={40} height={40} />
+            <Image src="/icon/phone.png" alt="Phone" width={50} height={50} />
           </div>
         </Link>
       </div>
