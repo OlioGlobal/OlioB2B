@@ -12,14 +12,14 @@ const Hero = () => {
     <>
       <section className="relative min-h-screen w-full flex items-center">
         <div className="absolute inset-0 z-0">
-          {/* Video background with optimization */}
           <video
             className="object-cover object-center w-full h-full"
             autoPlay
             loop
             muted
             playsInline
-            preload="auto"
+            preload="none"
+            poster="/hero_bg.jpg"
           >
             <source src="/video/bg.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -27,7 +27,6 @@ const Hero = () => {
           <div className="absolute inset-0 bg-[linear-gradient(270deg,_rgba(0,_0,_0,_0)_25.9%,_#000000_59.65%)]"></div>
         </div>
 
-        {/* Max-width content container */}
         <div className="z-10 max w-full lg:mt-10 px-[5%]">
           <div className="flex flex-col md:flex-row justify-between gap-0 md:gap-8">
             <div className="md:w-[50%] flex flex-col items-start gap-2 md:gap-10">
@@ -50,7 +49,6 @@ const Hero = () => {
             </div>
 
             <div className="md:w-[50%] flex md:items-end md:justify-end gap-5">
-              {/* Optional Brand Icons */}
               <div className="flex items-center justify-center bg-white/22 p-4 rounded-[10px] gap-4 mt-6 md:mt-0">
                 <div className="flex items-center justify-center gap-4">
                   <Image
