@@ -39,14 +39,18 @@ const RevenueBoostingCard = () => {
             <Image src="/icon/star.png" width={40} height={40} alt="star" />
           </div>
 
-          <h2 className="h2t text-center leading-[135%]">
+          <h2 className="h2t text-center leading-[135%]" data-aos="zoom-in-up">
             The "Revenue Boosting" Secret <br />
             <span className="text-[#EE314E]">Top 1% Manufacturers Use</span>
           </h2>
 
           <div className="mt-8 md:mt-14 grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
             {data.map((item, index) => (
-              <div key={index} className="flex flex-col space-y-3">
+              <div
+                key={index}
+                className="flex flex-col space-y-3"
+                data-aos="zoom-in"
+              >
                 <span className="text-[#EE314E] font-medium para">
                   {item.id}
                 </span>

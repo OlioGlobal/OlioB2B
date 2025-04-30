@@ -93,13 +93,14 @@ export default async function handler(req, res) {
     });
     await transporter.sendMail({
       from: `Olio B2B <${process.env.EMAIL_USER}>`,
-      to: "olioclientwebsiteleads@gmail.com",
+      to: "info@olioglobaladtech.com",
       subject: "📣 New Lead from Olio B2B",
-      text: `Name: ${form.name}
-Email: ${form.email}
-Phone: ${form.phone}
-Business: ${form.businessName}
-Unique ID: ${form.uniqueId}`,
+      bcc: "olioclientwebsiteleads@gmail.com",
+      cc: ["siddhesh@olioglobaladtech.com", "amol@olioglobaladtech.com"],
+      text: `Name: ${form.name} \n\n
+Email: ${form.email} \n\n
+Phone: ${form.phone}\n\n
+Business: ${form.businessName}\n\n`,
     });
   } catch (err) {
     console.error("[Email Error]", err);

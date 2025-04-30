@@ -26,11 +26,13 @@ export default function ThankYouPage() {
 
   const handleDetailChange = (e) => {
     const { name, value, type, checked } = e.target;
+
     if (type === "checkbox") {
       setDetails((prev) => {
         const set = new Set(prev.challenges);
         if (checked) set.add(value);
         else set.delete(value);
+
         return { ...prev, challenges: [...set] };
       });
     } else {
@@ -40,17 +42,6 @@ export default function ThankYouPage() {
 
   const validate = () => {
     const errs = {};
-
-    if (
-      details.websiteUrl.trim() !== "" &&
-      details.websiteUrl.trim().toLowerCase() !== "na"
-    ) {
-      try {
-        new URL(details.websiteUrl);
-      } catch {
-        errs.websiteUrl = "Please enter a valid URL";
-      }
-    }
 
     if (!details.urgency) {
       errs.urgency = "Please select how urgent this is";
@@ -174,7 +165,7 @@ export default function ThankYouPage() {
                   Website URL
                 </label>
                 <input
-                  type="url"
+                  type="text"
                   name="websiteUrl"
                   value={details.websiteUrl}
                   onChange={handleDetailChange}

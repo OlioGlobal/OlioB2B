@@ -31,7 +31,7 @@ const SalesBlockers = () => {
 
   return (
     <section className="rm max px-[5%] bg-white">
-      <div className=" mx-auto">
+      <div className=" mx-auto" data-aos="fade-up">
         <div className="mb-12">
           <h2 className="h2t mb-2 text-[#253844] text-center leading-[135%]">
             Why Are Your Sales Numbers <br /> Not Growing?
@@ -45,8 +45,8 @@ const SalesBlockers = () => {
 
         <div className="grid md:px-[5%] grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {blockers.map((blocker, index) => (
-            <div key={index} className="flex flex-col gap-3">
-              <div className=" relative">
+            <div key={index} className="flex flex-col gap-3" data-aos="fade-up">
+              <div className=" relative" data-aos="fade-up">
                 <Image
                   src={blocker.icon}
                   alt={blocker.heading}

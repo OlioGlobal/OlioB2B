@@ -1,10 +1,21 @@
 import "@/styles/globals.css";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import { FormProvider } from "../../context/FormContext";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+      once: true,
+    });
+  }, []);
+
   return (
     <>
       <Head>
