@@ -11,7 +11,7 @@ import Head from "next/head";
 export default function App({ Component, pageProps }) {
   useEffect(() => {
     AOS.init({
-      duration: 500,
+      duration: 800,
       once: true,
     });
   }, []);
