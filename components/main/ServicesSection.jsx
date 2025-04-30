@@ -87,7 +87,7 @@ export default function ServicesSection() {
       {/* Header */}
       <motion.div
         className="text-center mb-12"
-        initial={{ opacity: 0, y: -50 }}
+        initial={{ opacity: 0, y: -100 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
