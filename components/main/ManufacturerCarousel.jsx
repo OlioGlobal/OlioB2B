@@ -102,7 +102,7 @@ const ManufacturerCarousel = () => {
       description:
         "How technical content and LinkedIn campaigns shortened sales cycles by 71% for paper manufacturing machinery suppliers?",
       increase: "168%",
-      increaseText: "International inquiries from from 7 key markets",
+      increaseText: "International inquiries from 7 key markets",
       isIncrease: true,
     },
   ];

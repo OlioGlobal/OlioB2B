@@ -2,27 +2,34 @@ import Link from "next/link";
 import Image from "next/image";
 import LeadFormPopup from "../others/LeadFormPopup";
 import { useState } from "react";
+
 const Hero = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => setIsPopupOpen(true);
   const closePopup = () => setIsPopupOpen(false);
+
   return (
     <>
       <section className="relative min-h-screen w-full flex items-center">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/hero_bg.jpg"
-            alt="Manufacturing background"
-            fill
-            className="object-cover object-center"
-            priority
-          />
+          {/* Video background with optimization */}
+          <video
+            className="object-cover object-center w-full h-full"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+          >
+            <source src="/video/bg.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div className="absolute inset-0 bg-[linear-gradient(270deg,_rgba(0,_0,_0,_0)_25.9%,_#000000_59.65%)]"></div>
         </div>
 
         {/* Max-width content container */}
         <div className="z-10 max w-full lg:mt-10 px-[5%]">
-          <div className=" flex flex-col md:flex-row justify-between gap-0 md:gap-8">
+          <div className="flex flex-col md:flex-row justify-between gap-0 md:gap-8">
             <div className="md:w-[50%] flex flex-col items-start gap-2 md:gap-10">
               <h1 className="h1t leading-[105%] text-[#ffffff]">
                 3X Your Sales-Ready Lead Flow in 90 Days
@@ -43,33 +50,19 @@ const Hero = () => {
             </div>
 
             <div className="md:w-[50%] flex md:items-end md:justify-end gap-5">
-              {/* <div className="flex gap-5 bg-white/30 rounded-[10px] p-5">
-              <Image
-                src="/icon/google.png"
-                alt="Hero Image"
-                width={100}
-                height={100}
-              />
-              <Image
-                src="/icon/meta.png"
-                alt="Hero Image"
-                width={100}
-                height={100}
-              />
-            </div> */}
-
-              <div className="flex  items-center justify-center  bg-white/22 p-4 rounded-[10px] gap-4 mt-6 md:mt-0">
-                <div className="flex   items-center justify-center  gap-4">
+              {/* Optional Brand Icons */}
+              <div className="flex items-center justify-center bg-white/22 p-4 rounded-[10px] gap-4 mt-6 md:mt-0">
+                <div className="flex items-center justify-center gap-4">
                   <Image
                     src="/icon/google.png"
-                    alt="Hero Image"
+                    alt="Google"
                     width={100}
                     height={40}
                     className=""
                   />
                   <Image
                     src="/icon/meta.png"
-                    alt="Hero Image"
+                    alt="Meta"
                     width={100}
                     height={40}
                     className=""

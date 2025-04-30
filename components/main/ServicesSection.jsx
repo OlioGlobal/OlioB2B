@@ -1,5 +1,5 @@
 // components/ServicesSection.jsx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const services = [
@@ -36,9 +36,8 @@ const services = [
           If you’re not on Page 1 for engineering keywords, you’re invisible.
         </span>{" "}
         <br />
-        Our “Search Engine Optimization (SEO)” strategy targets exact phrases
-        procurement teams search (e.g., “high-torque gearbox suppliers ISO
-        9001”).
+        Our SEO strategy targets phrases procurement teams search like
+        “high-torque gearbox suppliers ISO 9001”.
       </span>
     ),
   },
@@ -56,9 +55,8 @@ const services = [
           Generic ads burn budgets. Ours only target ready-to-buy engineers.
         </span>{" "}
         <br />
-        Pay-per-click (PPC) Ads optimized for Business-to-business (B2B)
-        purchase intent, with landing pages that convert 3X better than industry
-        averages.
+        PPC Ads optimized for B2B purchase intent with landing pages that
+        convert 3× better than average.
       </span>
     ),
   },
@@ -76,27 +74,12 @@ const services = [
           Generic data-sheets can bore buyers. Demo videos engage better.
         </span>{" "}
         <br />
-        We produce animations & plant walkthroughs with value-focused visual
-        storytelling, cutting sales cycles by 50%, and improving conversions
-        dramatically.
+        We produce animations & plant walkthroughs with value-driven visual
+        storytelling to shorten sales cycles.
       </span>
     ),
   },
 ];
-
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 50 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
 
 export default function ServicesSection() {
   return (
@@ -122,29 +105,25 @@ export default function ServicesSection() {
       </motion.div>
 
       {/* Services List */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="space-y-8"
-      >
+      <div className="space-y-8">
         {services.map((svc, idx) => (
           <motion.div
             key={svc.id}
-            variants={itemVariants}
             className={`md:flex gap-5 md:items-start ${
               idx > 0 ? "pt-8 border-t border-[#D5D5D5]" : ""
             }`}
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: idx * 0.1 }}
           >
             <div className="md:w-1/3 flex-shrink-0 flex items-baseline">
               <span className="text-[#EE314E] para2 mr-4">{svc.id}</span>
-              <h3 className=" font-bold text-[#253844] text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] leading-[160%]">
+              <h3 className="font-bold text-[#253844] text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] leading-[160%]">
                 {svc.title}
               </h3>
             </div>
 
-            {/* Description */}
             <div className="md:w-2/3 mt-4 md:mt-0">
               <p className="para text-[#404A50] leading-[160%]">
                 {svc.description}
@@ -152,7 +131,7 @@ export default function ServicesSection() {
             </div>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }
