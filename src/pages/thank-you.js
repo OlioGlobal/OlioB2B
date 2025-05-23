@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useFormContext } from "../../context/FormContext";
 import Head from "next/head";
+import Link from "next/link";
 
 export default function ThankYouPage() {
   const router = useRouter();
@@ -132,9 +133,15 @@ export default function ThankYouPage() {
                 🎉 Thank you!
               </p>
               <p className="text-gray-700 para">
-                We’ll review your details and contact you within 24 hours to
-                discuss how we can boost your digital presence,
-                and your revenue.
+                We truly appreciate you reaching out. We typically take 24 to 48
+                hours to respond to queries like yours — just enough time to
+                ensure we give it the attention it deserves.
+                <br /> <br />
+                In the meantime, if it&apos;s something urgent, feel free to
+                call us directly at{" "}
+                <Link className="text-blue-400" href="tel:+91 99309 99834">
+                  +91 99309 99834.
+                </Link>
               </p>
             </div>
           ) : (
