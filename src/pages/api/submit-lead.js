@@ -58,13 +58,20 @@ export default async function handler(req, res) {
   }
 
   const form = req.body;
-
   // Send to Google Sheets
   try {
+    const flattenedForm = {
+      ...form,
+      ...(form.utm || {}),
+      action: "submit-lead",
+    };
+
+    delete flattenedForm.utm;
+
     const sheetResp = await fetch(process.env.GS, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...form, action: "submit-lead" }),
+      body: JSON.stringify(flattenedForm),
     });
     if (!sheetResp.ok) {
       console.error("[Sheets Error]", await sheetResp.text());

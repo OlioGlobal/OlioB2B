@@ -1,11 +1,12 @@
 // components/LeadFormPopup.jsx
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { useFormContext } from "../../context/FormContext";
+import { useForm } from "../../context/FormContext";
 
 export default function LeadFormPopup({ isOpen, onClose }) {
   const router = useRouter();
-  const { updateFormData, generateUniqueId } = useFormContext();
+  const { updateFormData, generateUniqueId, formData } = useForm();
+
   const [values, setValues] = useState({
     name: "",
     businessName: "",
@@ -51,7 +52,7 @@ export default function LeadFormPopup({ isOpen, onClose }) {
 
     setSubmitting(true);
     const uniqueId = generateUniqueId();
-    const payload = { ...values, uniqueId };
+    const payload = { ...values, uniqueId, utm: formData.utm || {} };
     updateFormData(payload);
 
     try {

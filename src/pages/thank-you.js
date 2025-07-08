@@ -1,14 +1,14 @@
 // pages/thank-you.js
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useFormContext } from "../../context/FormContext";
+import { useForm } from "../../context/FormContext";
 import Head from "next/head";
 import Link from "next/link";
 
 export default function ThankYouPage() {
   const router = useRouter();
   const { id } = router.query;
-  const { formData, updateFormData } = useFormContext();
+  const { formData, updateFormData } = useForm();
 
   const [details, setDetails] = useState({
     websiteUrl: "",

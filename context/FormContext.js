@@ -1,7 +1,17 @@
-import { createContext, useContext, useState } from "react";
+"use client";
+import { createContext, useContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const FormContext = createContext();
+const UTM_KEYS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_campaignname",
+  "utm_adgroupname",
+];
+
+const FormContext = createContext(null);
 
 export function FormProvider({ children }) {
   const [formData, setFormData] = useState({
@@ -13,6 +23,7 @@ export function FormProvider({ children }) {
     websiteUrl: "",
     urgency: "",
     challenges: [],
+    utm: {},
   });
 
   const updateFormData = (data) => {
@@ -25,6 +36,20 @@ export function FormProvider({ children }) {
     return uniqueId;
   };
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const utmData = {};
+
+    UTM_KEYS.forEach((key) => {
+      const value = searchParams.get(key);
+      if (value) utmData[key] = decodeURIComponent(value);
+    });
+
+    if (Object.keys(utmData).length > 0) {
+      updateFormData({ utm: utmData });
+    }
+  }, []);
+
   return (
     <FormContext.Provider
       value={{ formData, updateFormData, generateUniqueId }}
@@ -34,4 +59,10 @@ export function FormProvider({ children }) {
   );
 }
 
-export const useFormContext = () => useContext(FormContext);
+export function useForm() {
+  const context = useContext(FormContext);
+  if (!context) {
+    throw new Error("useForm must be used within a FormProvider");
+  }
+  return context;
+}
