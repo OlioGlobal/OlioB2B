@@ -103,7 +103,11 @@ export default async function handler(req, res) {
       to: "info@olioglobaladtech.com",
       subject: "📣 New Lead from Olio B2B",
       bcc: "olioclientwebsiteleads@gmail.com",
-      cc: ["siddhesh@olioglobaladtech.com", "amol@olioglobaladtech.com"],
+      cc: [
+        "siddhesh@olioglobaladtech.com",
+        "amol@olioglobaladtech.com",
+        "shaun@olioglobaladtech.com",
+      ],
       text: `Name: ${form.name} \n\n
   Email: ${form.email} \n\n
   Phone: ${form.phone}\n\n
