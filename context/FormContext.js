@@ -6,9 +6,10 @@ const UTM_KEYS = [
   "utm_source",
   "utm_medium",
   "utm_campaign",
-  "utm_term",
   "utm_campaignname",
+  "utm_adgroup",
   "utm_adgroupname",
+  "utm_term",
 ];
 
 const FormContext = createContext(null);

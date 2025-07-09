@@ -105,9 +105,9 @@ export default async function handler(req, res) {
       bcc: "olioclientwebsiteleads@gmail.com",
       cc: ["siddhesh@olioglobaladtech.com", "amol@olioglobaladtech.com"],
       text: `Name: ${form.name} \n\n
-Email: ${form.email} \n\n
-Phone: ${form.phone}\n\n
-Business: ${form.businessName}\n\n`,
+  Email: ${form.email} \n\n
+  Phone: ${form.phone}\n\n
+  Business: ${form.businessName}\n\n`,
     });
   } catch (err) {
     console.error("[Email Error]", err);
