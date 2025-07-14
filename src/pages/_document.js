@@ -1,3 +1,5 @@
+// src/pages/_document.jsx
+
 import { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
 
@@ -5,6 +7,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        {/* Google Tag Manager Head */}
         <Script id="gtm-head" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -14,6 +17,28 @@ export default function Document() {
             })(window,document,'script','dataLayer','GTM-T6263GJ');
           `}
         </Script>
+
+        {/* UTM Parameter Capture Script */}
+        <Script id="utm-capture" strategy="afterInteractive">
+          {`
+            (function () {
+              const params = new URLSearchParams(window.location.search);
+              const trackingFields = [
+                "utm_source", "utm_medium", "utm_campaign", "utm_campaignname",
+                "utm_adgroup", "utm_adgroupname", "utm_term", "utm_content",
+                "utm_adid", "utm_device", "utm_matchtype", "utm_network",
+                "utm_position", "utm_location", "utm_pincode", "utm_sitelink",
+                "gclid", "gbraid"
+              ];
+              trackingFields.forEach(key => {
+                const value = params.get(key);
+                if (value) localStorage.setItem(key, value);
+              });
+            })();
+          `}
+        </Script>
+
+        {/* Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -29,7 +54,9 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
+
       <body className="antialiased">
+        {/* Google Tag Manager NoScript Fallback */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-T6263GJ"
