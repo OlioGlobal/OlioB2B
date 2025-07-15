@@ -29,6 +29,7 @@ async function createZohoLead(accessToken, form) {
         Last_Name: form.name || "Unknown",
         Company: form.businessName || "",
         Email: form.email || "",
+        Website: form.websiteUrl || "",
         Mobile: form.phone || "",
         unique_id1: form.uniqueId || "",
         Contact_Us_Page_Name: "B2B Page",

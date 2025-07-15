@@ -12,6 +12,7 @@ export default function LeadFormPopup({ isOpen, onClose }) {
     businessName: "",
     email: "",
     phone: "",
+    websiteUrl: "",
   });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -30,6 +31,13 @@ export default function LeadFormPopup({ isOpen, onClose }) {
 
     if (!/\S+@\S+\.\S+/.test(values.email)) {
       errs.email = "Valid email required";
+    }
+
+    if (
+      values.websiteUrl &&
+      !/^https?:\/\/[^\s/$.?#].[^\s]*$/.test(values.websiteUrl)
+    ) {
+      errs.websiteUrl = "Enter a valid website URL (starting with http)";
     }
 
     const cleanedPhone = values.phone.replace(/\D/g, ""); // Remove non-digits
@@ -120,15 +128,21 @@ export default function LeadFormPopup({ isOpen, onClose }) {
             },
             {
               name: "email",
-              label: "Email",
-              placeholder: "Enter Email",
+              label: "Business Email",
+              placeholder: "Enter Business Email",
               type: "email",
             },
             {
               name: "phone",
-              label: "Mobile",
-              placeholder: "Enter Mobile Number",
+              label: "Business Mobile",
+              placeholder: "Enter Business Mobile Number",
               type: "tel",
+            },
+            {
+              name: "websiteUrl", // ✅ New Field
+              label: "Website URL",
+              placeholder: "https://example.com",
+              type: "text",
             },
           ].map(({ name, label, placeholder, type = "text" }) => (
             <div key={name} className="mb-5">
@@ -143,8 +157,8 @@ export default function LeadFormPopup({ isOpen, onClose }) {
                 onChange={handleChange}
                 placeholder={placeholder}
                 className={`w-full pb-1 border-b-2 focus:outline-none 
-                  ${errors[name] ? "border-red-500" : "border-gray-400"}
-                  focus:border-gray-800 placeholder-gray-400`}
+          ${errors[name] ? "border-red-500" : "border-gray-400"}
+          focus:border-gray-800 placeholder-gray-400`}
               />
               {errors[name] && (
                 <p className="text-red-500 text-sm mt-1">{errors[name]}</p>

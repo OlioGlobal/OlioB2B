@@ -11,7 +11,7 @@ export default function ThankYouPage() {
   const { formData, updateFormData } = useForm();
 
   const [details, setDetails] = useState({
-    websiteUrl: "",
+    websiteUrl: formData.websiteUrl || "",
     urgency: "",
     challenges: [],
   });
@@ -86,7 +86,6 @@ export default function ThankYouPage() {
       if (!res.ok) throw new Error("Network error");
 
       updateFormData({
-        name: "",
         email: "",
         phone: "",
         businessName: "",
@@ -167,7 +166,7 @@ export default function ThankYouPage() {
                 ))}
               </div>
 
-              <div>
+              {/* <div>
                 <label className="block text-[14px] font-semibold text-[#253844] mb-1">
                   Website URL
                 </label>
@@ -184,7 +183,7 @@ export default function ThankYouPage() {
                     {errors.websiteUrl}
                   </p>
                 )}
-              </div>
+              </div> */}
 
               <fieldset>
                 <legend className="para font-semibold text-[#253844] mb-1">
