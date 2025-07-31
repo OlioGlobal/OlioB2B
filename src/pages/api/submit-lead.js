@@ -34,15 +34,18 @@ async function createZohoLead(accessToken, form) {
         unique_id1: form.uniqueId || "",
         Contact_Us_Page_Name: "B2B Page",
 
-        utm_source: form.utm.utm_source || "",
-        utm_campaign: form.utm.utm_campaign || "",
-        utm_term: form.utm.utm_term || "",
-        adgroup: form.utm.utm_adgroup || "",
-        utm_adgroupname: form.utm.utm_adgroupname || "",
-        utm_campaignname: form.utm.utm_campaignname || "",
+        utm_source: form.utm?.utm_source || "",
+        utm_medium: form.utm?.utm_medium || "",
+        utm_campaign: form.utm?.utm_campaign || "",
+        utm_term: form.utm?.utm_term || "",
+        adgroup: form.utm?.utm_adgroup || "",
+        utm_adgroupname: form.utm?.utm_adgroupname || "",
+        utm_campaignname: form.utm?.utm_campaignname || "",
       },
     ],
   };
+
+  console.log("[Zoho Payload]", JSON.stringify(payload, null, 2));
 
   const resp = await fetch(`${ZOHO_CRM_BASE_URL}/crm/v2/Leads`, {
     method: "POST",
@@ -66,6 +69,7 @@ export default async function handler(req, res) {
   }
 
   const form = req.body;
+
   // Send to Google Sheets
   try {
     const flattenedForm = {
@@ -87,44 +91,130 @@ export default async function handler(req, res) {
       throw new Error("Failed to log to Sheets");
     }
   } catch (err) {
-    return res.status(500).json({ message: err.message });
+    console.error("[Sheets Error]", err);
+    // Don't return here, continue with Zoho and email
   }
 
+  // Create Zoho Lead
   try {
     const token = await getZohoAccessToken();
-    await createZohoLead(token, form);
-  } catch (err) {
-    return res.status(500).json({ message: err.message });
-  }
+    const zohoResult = await createZohoLead(token, form);
 
-  try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-    await transporter.sendMail({
-      from: `Olio B2B <${process.env.EMAIL_USER}>`,
-      to: "info@olioglobaladtech.com",
-      subject: "📣 New Lead from Olio B2B",
-      bcc: "olioclientwebsiteleads@gmail.com",
-      cc: [
-        "siddhesh@olioglobaladtech.com",
-        "amol@olioglobaladtech.com",
-        "shaun@olioglobaladtech.com",
-      ],
-      text: `Name: ${form.name} \n\n
-    Email: ${form.email} \n\n
-    Phone: ${form.phone}\n\n
-    Business: ${form.businessName}\n\n`,
+    const status = zohoResult?.data?.[0]?.code;
+    const zohoId = zohoResult?.data?.[0]?.details?.id;
+
+    if (status !== "SUCCESS") {
+      console.error(
+        "[Zoho Error Response]",
+        JSON.stringify(zohoResult, null, 2)
+      );
+      // Don't return error, continue with email
+    }
+
+    // Send Email Notification
+    try {
+      const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
+        },
+      });
+
+      await transporter.sendMail({
+        from: `Olio B2B <${process.env.EMAIL_USER}>`,
+        to: "info@olioglobaladtech.com",
+        subject: "📣 New Lead from Olio B2B",
+        bcc: "olioclientwebsiteleads@gmail.com",
+        cc: [
+          "siddhesh@olioglobaladtech.com",
+          "amol@olioglobaladtech.com",
+          "shaun@olioglobaladtech.com",
+        ],
+        text: `Name: ${form.name || "N/A"}
+
+Email: ${form.email || "N/A"}
+
+Phone: ${form.phone || "N/A"}
+
+Business: ${form.businessName || "N/A"}
+
+Website: ${form.websiteUrl || "N/A"}
+
+UTM Details:
+- Source: ${form.utm?.utm_source || "N/A"}
+- Medium: ${form.utm?.utm_medium || "N/A"}
+- Campaign: ${form.utm?.utm_campaignname || form.utm?.utm_campaign || "N/A"}
+- Ad Group: ${form.utm?.utm_adgroupname || "N/A"}
+- Term: ${form.utm?.utm_term || "N/A"}
+
+Unique ID: ${form.uniqueId || "N/A"}`,
+      });
+    } catch (emailErr) {
+      console.error("[Email Error]", emailErr);
+    }
+
+    return res.status(200).json({
+      success: true,
+      zohoId,
+      uniqueId: form.uniqueId,
     });
   } catch (err) {
-    console.error("[Email Error]", err);
-  }
+    console.error("[Zoho Error]", err);
 
-  return res.status(200).json({ success: true, id: form.uniqueId });
+    // Still try to send email even if Zoho fails
+    try {
+      const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
+        },
+      });
+
+      await transporter.sendMail({
+        from: `Olio B2B <${process.env.EMAIL_USER}>`,
+        to: "info@olioglobaladtech.com",
+        subject: "📣 New Lead from Olio B2B (Zoho Failed)",
+        bcc: "olioclientwebsiteleads@gmail.com",
+        cc: [
+          "siddhesh@olioglobaladtech.com",
+          "amol@olioglobaladtech.com",
+          "shaun@olioglobaladtech.com",
+        ],
+        text: `Name: ${form.name || "N/A"}
+
+Email: ${form.email || "N/A"}
+
+Phone: ${form.phone || "N/A"}
+
+Business: ${form.businessName || "N/A"}
+
+Website: ${form.websiteUrl || "N/A"}
+
+UTM Details:
+- Source: ${form.utm?.utm_source || "N/A"}
+- Medium: ${form.utm?.utm_medium || "N/A"}
+- Campaign: ${form.utm?.utm_campaignname || form.utm?.utm_campaign || "N/A"}
+- Ad Group: ${form.utm?.utm_adgroupname || "N/A"}
+- Term: ${form.utm?.utm_term || "N/A"}
+
+Unique ID: ${form.uniqueId || "N/A"}
+
+Note: Zoho CRM integration failed, but lead data captured via email.`,
+      });
+    } catch (emailErr) {
+      console.error("[Email Error]", emailErr);
+    }
+
+    return res.status(500).json({
+      message: "Lead processing failed",
+      error: err.message,
+      uniqueId: form.uniqueId,
+    });
+  }
 }
