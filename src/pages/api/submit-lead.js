@@ -38,6 +38,8 @@ async function createZohoLead(accessToken, form) {
         utm_campaign: form.utm.utm_campaign || "",
         utm_term: form.utm.utm_term || "",
         adgroup: form.utm.utm_adgroup || "",
+        utm_adgroupname: form.utm.utm_adgroupname || "",
+        utm_campaignname: form.utm.utm_campaignname || "",
       },
     ],
   };
@@ -73,6 +75,7 @@ export default async function handler(req, res) {
     };
 
     delete flattenedForm.utm;
+    console.log(form);
 
     const sheetResp = await fetch(process.env.GS, {
       method: "POST",
@@ -115,9 +118,9 @@ export default async function handler(req, res) {
         "shaun@olioglobaladtech.com",
       ],
       text: `Name: ${form.name} \n\n
-  Email: ${form.email} \n\n
-  Phone: ${form.phone}\n\n
-  Business: ${form.businessName}\n\n`,
+    Email: ${form.email} \n\n
+    Phone: ${form.phone}\n\n
+    Business: ${form.businessName}\n\n`,
     });
   } catch (err) {
     console.error("[Email Error]", err);
