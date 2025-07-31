@@ -75,8 +75,8 @@ export default function LeadFormPopup({ isOpen, onClose }) {
         event: "leadFormSubmissionSuccess",
         formId: "leadFormPopup",
       });
-      // onClose?.();
-      //   router.push(`/thank-you?id=${uniqueId}`);
+      onClose?.();
+      router.push(`/thank-you?id=${uniqueId}`);
     } catch {
       setErrors({ submission: "Submission failed. Try again." });
     } finally {
