@@ -38,8 +38,8 @@ async function createZohoLead(accessToken, form) {
         utm_campaign: form.utm.utm_campaign || "",
         utm_term: form.utm.utm_term || "",
         adgroup: form.utm.utm_adgroup || "",
-        utm_adgroupname: form.utm.utm_adgroupname || "",
-        utm_campaignname: form.utm.utm_campaignname || "",
+        AdGroup_Name: form.utm.utm_adgroupname || "",
+        Ad_Campaign_Name: form.utm.utm_campaignname || "",
       },
     ],
   };
