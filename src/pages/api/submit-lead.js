@@ -33,6 +33,11 @@ async function createZohoLead(accessToken, form) {
         Mobile: form.phone || "",
         unique_id1: form.uniqueId || "",
         Contact_Us_Page_Name: "B2B Page",
+
+        utm_source: form.utm.utm_source || "",
+        utm_campaign: form.utm.utm_campaign || "",
+        utm_term: form.utm.utm_term || "",
+        adgroup: form.utm.utm_adgroup || "",
       },
     ],
   };
