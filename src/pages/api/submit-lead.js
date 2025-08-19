@@ -34,6 +34,9 @@ async function createZohoLead(accessToken, form) {
         unique_id1: form.uniqueId || "",
         Contact_Us_Page_Name: "B2B Page",
 
+        // Full URL field
+        Full_URL: form.fullUrl || "",
+
         utm_source: form.utm?.utm_source || "",
         utm_medium: form.utm?.utm_medium || "",
         utm_campaign: form.utm?.utm_campaign || "",
@@ -75,11 +78,11 @@ export default async function handler(req, res) {
     const flattenedForm = {
       ...form,
       ...(form.utm || {}),
+      fullUrl: form.fullUrl || "", // Add fullUrl to sheets
       action: "submit-lead",
     };
 
     delete flattenedForm.utm;
-    console.log(form);
 
     const sheetResp = await fetch(process.env.GS, {
       method: "POST",
@@ -101,7 +104,7 @@ export default async function handler(req, res) {
     const zohoResult = await createZohoLead(token, form);
 
     const status = zohoResult?.data?.[0]?.code;
-    const zohoId = zohoResult?.data?.[0]?.details?.id;
+    const zohoId = zohoResult?.data?.details?.id;
 
     if (status !== "SUCCESS") {
       console.error(
@@ -111,7 +114,6 @@ export default async function handler(req, res) {
       // Don't return error, continue with email
     }
 
-    // Send Email Notification
     try {
       const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -142,6 +144,8 @@ Phone: ${form.phone || "N/A"}
 Business: ${form.businessName || "N/A"}
 
 Website: ${form.websiteUrl || "N/A"}
+
+Full URL: ${form.fullUrl || "N/A"}
 
 UTM Details:
 - Source: ${form.utm?.utm_source || "N/A"}
@@ -195,6 +199,8 @@ Phone: ${form.phone || "N/A"}
 Business: ${form.businessName || "N/A"}
 
 Website: ${form.websiteUrl || "N/A"}
+
+Full URL: ${form.fullUrl || "N/A"}
 
 UTM Details:
 - Source: ${form.utm?.utm_source || "N/A"}

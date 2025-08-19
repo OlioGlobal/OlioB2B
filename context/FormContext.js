@@ -22,9 +22,14 @@ export function FormProvider({ children }) {
     phone: "",
     businessName: "",
     websiteUrl: "",
-    urgency: "",
-    challenges: [],
     utm: {},
+    fullUrl: "",
+    // Only the new fields (removed urgency and challenges)
+    industry: "",
+    marketingChallenge: "",
+    marketingBudget: "below-1L", // Default to first option
+    currentAgency: "",
+    marketingGoal: "",
   });
 
   const updateFormData = (data) => {
@@ -38,17 +43,22 @@ export function FormProvider({ children }) {
   };
 
   useEffect(() => {
+    // Capture full URL with all parameters
+    const fullUrl = window.location.href;
+
+    // Extract UTM parameters
     const searchParams = new URLSearchParams(window.location.search);
     const utmData = {};
-
     UTM_KEYS.forEach((key) => {
       const value = searchParams.get(key);
       if (value) utmData[key] = decodeURIComponent(value);
     });
 
-    if (Object.keys(utmData).length > 0) {
-      updateFormData({ utm: utmData });
-    }
+    // Update form data
+    updateFormData({
+      fullUrl,
+      utm: utmData,
+    });
   }, []);
 
   return (

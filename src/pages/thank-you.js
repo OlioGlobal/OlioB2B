@@ -12,8 +12,11 @@ export default function ThankYouPage() {
 
   const [details, setDetails] = useState({
     websiteUrl: formData.websiteUrl || "",
-    urgency: "",
-    challenges: [],
+    industry: "",
+    marketingChallenge: "",
+    marketingBudget: "", // Default to first option
+    currentAgency: "",
+    marketingGoal: "",
   });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -21,35 +24,20 @@ export default function ThankYouPage() {
 
   useEffect(() => {
     if (router.isReady && (!id || formData.uniqueId !== id)) {
-      router.push("/");
+      // router.push("/");
     }
   }, [router, id, formData]);
 
   const handleDetailChange = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    if (type === "checkbox") {
-      setDetails((prev) => {
-        const set = new Set(prev.challenges);
-        if (checked) set.add(value);
-        else set.delete(value);
-
-        return { ...prev, challenges: [...set] };
-      });
-    } else {
-      setDetails((prev) => ({ ...prev, [name]: value }));
-    }
+    const { name, value } = e.target;
+    setDetails((prev) => ({ ...prev, [name]: value }));
   };
 
   const validate = () => {
     const errs = {};
 
-    if (!details.urgency) {
-      errs.urgency = "Please select how urgent this is";
-    }
-
-    if (details.challenges.length === 0) {
-      errs.challenges = "Please select at least one challenge";
+    if (!details.marketingBudget) {
+      errs.marketingBudget = "Please select your marketing budget";
     }
 
     return errs;
@@ -90,8 +78,11 @@ export default function ThankYouPage() {
         phone: "",
         businessName: "",
         websiteUrl: "",
-        urgency: "",
-        challenges: [],
+        industry: "",
+        marketingChallenge: "",
+        marketingBudget: "",
+        currentAgency: "",
+        marketingGoal: "",
       });
 
       setDone(true);
@@ -105,17 +96,17 @@ export default function ThankYouPage() {
   if (!formData.uniqueId) return <div>Loading…</div>;
 
   return (
-    <div className="  py-20 mt-10">
+    <div className="py-20 mt-10">
       <Head>
         <title>Thank You | Lead Consultation</title>
       </Head>
 
-      <div className=" px-[5%] max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
+      <div className="px-[5%] max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
         <div className="flex flex-col mt-2">
           <p className="text-[#404A50] text-[24px] leading-[160%] font-medium mb-4">
             Thank you for enquiring,{" "}
             <span className="font-semibold">{formData.name}</span>. <br />
-            We’re excited to help you take your business to the next level!
+            We&apos;re excited to help you take your business to the next level!
           </p>
           <h1 className="h1t leading-[109.00000000000001%] text-[#211735] font-bold">
             Scale Your Sales Flow 10X Faster&ndash;Seamlessly!
@@ -125,10 +116,10 @@ export default function ThankYouPage() {
           </p>
         </div>
 
-        <div className="bg-white  w-full flex justify-center items-center border-[1px] border-[#CBCBCB] rounded-lg px-4 py-4 lg:py-8 lg:px-6 shadow-sm">
+        <div className="bg-white w-full flex justify-center items-center border-[1px] border-[#CBCBCB] rounded-lg px-4 py-4 lg:py-8 lg:px-6 shadow-sm">
           {done ? (
             <div className="text-center">
-              <p className="text-3xl  font-semibold text-gray-800 mb-4">
+              <p className="text-3xl font-semibold text-gray-800 mb-4">
                 🎉 Thank you!
               </p>
               <p className="text-gray-700 para">
@@ -144,7 +135,7 @@ export default function ThankYouPage() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6 w-full ">
+            <form onSubmit={handleSubmit} className="space-y-6 w-full">
               <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
                   { label: "Full Name", value: formData.name },
@@ -160,105 +151,114 @@ export default function ThankYouPage() {
                       readOnly
                       type="text"
                       value={value}
-                      className="w-full pb-1 border-b-2 bg-gray-50 p-1 border-gray-300  text-gray-600 focus:outline-none"
+                      className="w-full pb-1 border-b-2 bg-gray-50 p-1 border-gray-300 text-gray-600 focus:outline-none"
                     />
                   </div>
                 ))}
               </div>
 
-              {/* <div>
+              {/* Industry Field */}
+              <div>
                 <label className="block text-[14px] font-semibold text-[#253844] mb-1">
-                  Website URL
+                  What industry do you operate in?
                 </label>
                 <input
                   type="text"
-                  name="websiteUrl"
-                  value={details.websiteUrl}
+                  name="industry"
+                  value={details.industry}
                   onChange={handleDetailChange}
-                  placeholder="https://example.com"
-                  className="w-full pb-1 border-b-2 p-1  border-gray-300 focus:outline-none focus:border-gray-900"
+                  placeholder="e.g., Technology, Healthcare, Finance"
+                  className="w-full pb-1 border-b-2 p-1 border-gray-300 focus:outline-none focus:border-gray-900"
                 />
-                {errors.websiteUrl && (
+                {errors.industry && (
+                  <p className="mt-1 text-red-500 text-sm">{errors.industry}</p>
+                )}
+              </div>
+
+              {/* Marketing Challenge Field */}
+              <div>
+                <label className="block text-[14px] font-semibold text-[#253844] mb-1">
+                  What is your current marketing challenge?
+                </label>
+                <input
+                  type="text"
+                  name="marketingChallenge"
+                  value={details.marketingChallenge}
+                  onChange={handleDetailChange}
+                  placeholder="Describe your biggest marketing challenge"
+                  className="w-full pb-1 border-b-2 p-1 border-gray-300 focus:outline-none focus:border-gray-900"
+                />
+                {errors.marketingChallenge && (
                   <p className="mt-1 text-red-500 text-sm">
-                    {errors.websiteUrl}
+                    {errors.marketingChallenge}
                   </p>
                 )}
-              </div> */}
+              </div>
 
-              <fieldset>
-                <legend className="para font-semibold text-[#253844] mb-1">
-                  How urgently do you need to fix your digital presence?
-                </legend>
-                {[
-                  {
-                    label: "Immediately — We’re losing deals",
-                    value: "immediately",
-                  },
-                  {
-                    label: "Within 3 months — Planning next growth",
-                    value: "within3Months",
-                  },
-                  { label: "Just exploring options", value: "exploring" },
-                ].map((opt, i) => (
-                  <label
-                    key={i}
-                    className="flex items-center mb-1 para font-normal text-[#404A50]"
-                  >
-                    <input
-                      type="radio"
-                      name="urgency"
-                      value={opt.value}
-                      checked={details.urgency === opt.value}
-                      onChange={handleDetailChange}
-                      className="mr-2 h-4 w-4  accent-[#EE314E] focus:accent-[#EE314E]"
-                    />
-                    {opt.label}
-                  </label>
-                ))}
-                {errors.urgency && (
-                  <p className="mt-1  text-red-500 text-sm">{errors.urgency}</p>
-                )}
-              </fieldset>
-
-              <fieldset>
-                <legend className="para font-semibold text-[#253844] mb-1">
-                  What’s your biggest marketing challenge right now?
-                </legend>
-                {[
-                  {
-                    label: "Our website isn’t generating leads",
-                    value: "noLeads",
-                  },
-                  {
-                    label: "Competitors outrank us on Google/LinkedIn",
-                    value: "competitorsSEO",
-                  },
-                  {
-                    label: "Lack of clear conversion funnel",
-                    value: "noFunnel",
-                  },
-                ].map((opt, i) => (
-                  <label
-                    key={i}
-                    className="flex items-center para text-[#253844] mb-1"
-                  >
-                    <input
-                      type="checkbox"
-                      name="challenges"
-                      value={opt.value}
-                      checked={details.challenges.includes(opt.value)}
-                      onChange={handleDetailChange}
-                      className="mr-2     h-4 w-4   accent-[#EE314E] focus:accent-[#EE314E]"
-                    />
-                    {opt.label}
-                  </label>
-                ))}
-                {errors.challenges && (
+              {/* Marketing Budget Dropdown - Required with default */}
+              <div>
+                <label className="block text-[14px] font-semibold text-[#253844] mb-1">
+                  What is your current monthly marketing budget? *
+                </label>
+                <select
+                  name="marketingBudget"
+                  value={details.marketingBudget}
+                  onChange={handleDetailChange}
+                  required
+                  className="w-full pb-1 border-b-2 p-1 border-gray-300 focus:outline-none focus:border-gray-900 bg-white"
+                >
+                  <option value="below-1L">Below 1L</option>
+                  <option value="1L-2.5L">1L - 2.5L</option>
+                  <option value="2.5L-5L">2.5L - 5L</option>
+                  <option value="5L-above">5L & Above</option>
+                </select>
+                {errors.marketingBudget && (
                   <p className="mt-1 text-red-500 text-sm">
-                    {errors.challenges}
+                    {errors.marketingBudget}
                   </p>
                 )}
-              </fieldset>
+              </div>
+
+              {/* Current Agency Field */}
+              <div>
+                <label className="block text-[14px] font-semibold text-[#253844] mb-1">
+                  Are you currently working with any agency or vendor? If yes,
+                  how is the experience?
+                </label>
+                <input
+                  type="text"
+                  name="currentAgency"
+                  value={details.currentAgency}
+                  onChange={handleDetailChange}
+                  placeholder="e.g., No, we handle internally / Yes, but results are poor"
+                  className="w-full pb-1 border-b-2 p-1 border-gray-300 focus:outline-none focus:border-gray-900"
+                />
+                {errors.currentAgency && (
+                  <p className="mt-1 text-red-500 text-sm">
+                    {errors.currentAgency}
+                  </p>
+                )}
+              </div>
+
+              {/* Marketing Goal Field */}
+              <div>
+                <label className="block text-[14px] font-semibold text-[#253844] mb-1">
+                  What is the primary goal of your marketing efforts?
+                </label>
+                <input
+                  type="text"
+                  name="marketingGoal"
+                  value={details.marketingGoal}
+                  onChange={handleDetailChange}
+                  placeholder="e.g., Brand Awareness, Lead Generation, Sales Growth"
+                  className="w-full pb-1 border-b-2 p-1 border-gray-300 focus:outline-none focus:border-gray-900"
+                />
+                {errors.marketingGoal && (
+                  <p className="mt-1 text-red-500 text-sm">
+                    {errors.marketingGoal}
+                  </p>
+                )}
+              </div>
 
               <fieldset>
                 <legend className="para font-semibold text-[#253844] mb-1">
@@ -271,7 +271,7 @@ export default function ThankYouPage() {
                   },
                   {
                     label:
-                      "Receiving actionable insights (even if we don’t work together)",
+                      "Receiving actionable insights (even if we don't work together)",
                   },
                   {
                     label: "Our Privacy Policy (we hate spam too)",
@@ -279,7 +279,7 @@ export default function ThankYouPage() {
                 ].map((opt, i) => (
                   <ul
                     key={i}
-                    className="flex  list-disc pl-5 items-center para  text-[#253844] "
+                    className="flex list-disc pl-5 items-center para text-[#253844]"
                   >
                     <li className="text-[#404A50] para"> {opt.label}</li>
                   </ul>

@@ -118,6 +118,33 @@
 //   return res.status(200).json({ success: true, id: lead.id });
 // }
 
+// export default async function handler(req, res) {
+//   if (req.method !== "POST") {
+//     return res.status(405).json({ message: "Method Not Allowed" });
+//   }
+
+//   try {
+//     const formData = req.body;
+//     const payload = { ...formData, action: "submit-detailed-info" };
+//     try {
+//       const res = await fetch(process.env.GS, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(payload),
+//       });
+//       if (!res.ok) {
+//         return res.status(500).json({ message: "Form Submission Failed" });
+//       }
+//     } catch (error) {
+//       return res.status(500).json({ message: "Internal Server Error" });
+//     }
+
+//     return res.status(200).json({ success: true, id: formData.uniqueId });
+//   } catch (error) {
+//     console.error("Error in submit-lead:", error);
+//     return res.status(500).json({ message: "Internal Server Error" });
+//   }
+// }
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method Not Allowed" });
@@ -125,23 +152,59 @@ export default async function handler(req, res) {
 
   try {
     const formData = req.body;
-    const payload = { ...formData, action: "submit-detailed-info" };
+
+    // Log the incoming data for debugging
+    console.log(
+      "[Detailed Info Submission]",
+      JSON.stringify(formData, null, 2)
+    );
+
+    const payload = {
+      ...formData,
+      action: "submit-detailed-info",
+      industry: formData.industry || "",
+      marketingChallenge: formData.marketingChallenge || "",
+      marketingBudget: formData.marketingBudget || "below-1L",
+      currentAgency: formData.currentAgency || "",
+      marketingGoal: formData.marketingGoal || "",
+      fullUrl: formData.fullUrl || "",
+    };
+
     try {
-      const res = await fetch(process.env.GS, {
+      const response = await fetch(process.env.GS, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      if (!res.ok) {
-        return res.status(500).json({ message: "Form Submission Failed" });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("[Google Sheets Error]", errorText);
+        return res.status(500).json({
+          message: "Form Submission Failed",
+          error: errorText,
+        });
       }
+
+      console.log("[Detailed Info] Successfully submitted to Google Sheets");
     } catch (error) {
-      return res.status(500).json({ message: "Internal Server Error" });
+      console.error("[Google Sheets Request Error]", error);
+      return res.status(500).json({
+        message: "Internal Server Error",
+        error: error.message,
+      });
     }
 
-    return res.status(200).json({ success: true, id: formData.uniqueId });
+    return res.status(200).json({
+      success: true,
+      id: formData.uniqueId,
+      message: "Detailed information submitted successfully",
+    });
   } catch (error) {
-    console.error("Error in submit-lead:", error);
-    return res.status(500).json({ message: "Internal Server Error" });
+    console.error("Error in submit-detailed-info:", error);
+    return res.status(500).json({
+      message: "Internal Server Error",
+      error: error.message,
+    });
   }
 }

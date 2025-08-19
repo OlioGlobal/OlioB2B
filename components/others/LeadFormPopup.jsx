@@ -22,6 +22,32 @@ export default function LeadFormPopup({ isOpen, onClose }) {
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
+  const normalizeWebsiteUrl = (url) => {
+    if (!url || url.trim() === "") return "";
+
+    let normalizedUrl = url.trim().toLowerCase();
+
+    // Handle common string inputs
+    if (
+      normalizedUrl === "na" ||
+      normalizedUrl === "n/a" ||
+      normalizedUrl === "none" ||
+      normalizedUrl === "no"
+    ) {
+      return "";
+    }
+
+    // Add https:// if no protocol is provided
+    if (
+      !normalizedUrl.startsWith("http://") &&
+      !normalizedUrl.startsWith("https://")
+    ) {
+      normalizedUrl = "https://" + normalizedUrl;
+    }
+
+    return normalizedUrl;
+  };
+
   const validate = () => {
     const errs = {};
 
@@ -33,11 +59,16 @@ export default function LeadFormPopup({ isOpen, onClose }) {
       errs.email = "Valid email required";
     }
 
-    if (
-      values.websiteUrl &&
-      !/^https?:\/\/[^\s/$.?#].[^\s]*$/.test(values.websiteUrl)
-    ) {
-      errs.websiteUrl = "Enter a valid website URL (starting with http)";
+    if (values.websiteUrl && values.websiteUrl.trim()) {
+      const normalizedUrl = normalizeWebsiteUrl(values.websiteUrl);
+
+      const urlPattern =
+        /^https?:\/\/(?:[-\w.])+(?:\.[a-zA-Z]{2,})+(?:\/[^?\s]*)?(?:\?[^#\s]*)?(?:#[^\s]*)?$/;
+
+      if (normalizedUrl && !urlPattern.test(normalizedUrl)) {
+        errs.websiteUrl =
+          "Enter a valid website URL (e.g., https://example.com)";
+      }
     }
 
     const cleanedPhone = values.phone.replace(/\D/g, ""); // Remove non-digits
@@ -60,7 +91,12 @@ export default function LeadFormPopup({ isOpen, onClose }) {
 
     setSubmitting(true);
     const uniqueId = generateUniqueId();
-    const payload = { ...values, uniqueId, utm: formData.utm || {} };
+    const payload = {
+      ...values,
+      uniqueId,
+      utm: formData.utm || {},
+      fullUrl: formData.fullUrl || "",
+    };
     updateFormData(payload);
 
     try {
