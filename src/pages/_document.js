@@ -82,6 +82,15 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <Script
+          id="datafast-analytics"
+          defer
+          data-website-id="68e024163e1a9a4b49d90a68"
+          data-domain="olioglobaladtech.com"
+          src="https://datafa.st/js/script.js"
+          strategy="afterInteractive"
+        />
+
         {/* Matomo Analytics */}
         <Script id="matomo-analytics" strategy="afterInteractive">
           {`
