@@ -20,7 +20,7 @@ const StickyFooter2 = () => {
             className="flex gap-4"
           >
             <Link
-              href="https://wa.me/918082714599?text=Book%20a%20FREE%2030-Minute%20Consultation%20Session"
+              href="https://wa.me/917303197934?text=Book%20a%20FREE%2030-Minute%20Consultation%20Session"
               target="_blank"
               passHref
             >
@@ -51,7 +51,7 @@ const StickyFooter2 = () => {
 
       <div className="hidden sm:flex flex-col fixed bottom-4 left-4 gap-2 z-50">
         <Link
-          href="https://wa.me/918082714599?text=Book%20a%20FREE%2030-Minute%20Consultation%20Session"
+          href="https://wa.me/917303197934?text=Book%20a%20FREE%2030-Minute%20Consultation%20Session"
           target="_blank"
           passHref
         >
