@@ -129,8 +129,8 @@ export default function ThankYouPage() {
                 <br /> <br />
                 In the meantime, if it&apos;s something urgent, feel free to
                 call us directly at{" "}
-                <Link className="text-blue-400" href="tel:+91 99309 99834">
-                  +91 99309 99834.
+                <Link className="text-blue-400" href="tel:+917303197934">
+                  +91 7303197934
                 </Link>
               </p>
             </div>

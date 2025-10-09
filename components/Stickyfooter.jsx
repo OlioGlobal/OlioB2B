@@ -34,7 +34,7 @@ const StickyFooter2 = () => {
               </div>
             </Link>
 
-            <Link href="tel:+919930999834" passHref>
+            <Link href="tel:+917303197934" passHref>
               <div className="bg-white  rounded-full shadow-md hover:scale-105 transition-transform">
                 <Image
                   src="/icon/phone.png"
@@ -65,7 +65,7 @@ const StickyFooter2 = () => {
           </div>
         </Link>
 
-        <Link href="tel:+919930999834" passHref>
+        <Link href="tel:+917303197934" passHref>
           <div className="bg-[#ffffff]  rounded-full shadow-lg hover:scale-105 transform transition duration-200">
             <Image src="/icon/phone.png" alt="Phone" width={50} height={50} />
           </div>
